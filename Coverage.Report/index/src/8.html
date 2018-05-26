@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\pipo\documents\bike.rental.intive\app.rent.bike.intive\rentbyhour.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+
+namespace rent.bike.intive
+{
+    public class RentByHour : IRentType
+    {
+        private RentContext contexto;
+
+        public string Description
+        {
+            get { return &quot;This is a rent by hour type&quot;; }
+        }
+
+        public Customer Customer { get; set; }
+
+        public Bike Bike { get; set; }
+
+        public RentByHour()
+        {
+            contexto = new RentContext();
+            IRentCostStrategy rentbyhour = new HourCostStrategy();
+            contexto.RentStrategy = rentbyhour;            
+        }
+
+        public double CalculateTotal()
+        {
+            return this.contexto.CalculateRentCost();
+        }
+
+        public string PrintTicket()
+        {
+            string msj = string.Empty;
+            if (this.Customer == null) { msj = &quot;&#161;The Rent need a customer asociated!\n&quot;; }
+
+            if (this.Bike == null) { msj += &quot;&#161;The rent needs at least one bike!\n&quot;; }
+
+            msj += this.Description + &quot;\n&quot;;
+            msj += this.contexto.GetCalculatedCost();
+
+            return msj;
+        }
+
+
+
+        public DateTime DateFrom { get; set; }
+
+        public DateTime DateTo { get; set; }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[11,17,11,18,1],[11,19,11,56,1],[11,57,11,58,1],[18,9,18,28,1],[19,9,19,10,1],[20,13,20,42,1],[21,13,21,67,1],[22,13,22,48,1],[23,9,23,10,1],[26,9,26,10,1],[27,13,27,54,1],[28,9,28,10,1],[31,9,31,10,1],[32,13,32,39,1],[33,13,33,39,1],[33,40,33,41,1],[33,42,33,89,1],[33,90,33,91,1],[35,13,35,35,1],[35,36,35,37,1],[35,38,35,84,1],[35,85,35,86,1],[37,13,37,44,1],[38,13,38,54,1],[40,13,40,24,1],[41,9,41,10,1]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+
+Finalmente use dotcover (plugin para vstudio2010):
+http://www.jetbrains.com/dotcover/?fromProduct
+
+
+OpenCover no funciona en una imágen de w7 en virtualbox =(
+/*********************************************************************************************/
+Canal de un programador vietnamita. explicación del uso del OpenCover y el ReporGenerator:
+https://www.youtube.com/watch?v=0UJNYrhH05w
+
+OpenCover: https://github.com/opencover/opencover/releases
+
+ReportGenerator: https://github.com/danielpalme/ReportGenerator/releases
+
+Commands:
+
+nunit console test:
+.\nunit3-console.exe "C:\Users\pipo\Documents\bike.rental.intive\TestProject2\bin\Debug\TestProject2.dll" 
+
+opencover console test:
+OpenCover.Console.exe -target:"C:\Users\pipo\Documents\bike.rental.intive\Rent.Bike.Test\bin\Debug\App.Alquiler.exe" -output:"C:\Users\pipo\Documents\bike.rental.intive\Reports\coverage.xml" -register -filter:+[TestProject]*
+
+reportgenerator:
+ReportGenerator.exe -reports:"C:\Users\pipo\Documents\bike.rental.intive\Reports\coverage.xml" -targetdir:"C:\Users\pipo\Documents\bike.rental.intive\Reports" -sourcedirs:"C:\Users\pipo\Documents\bike.rental.intive\Rent.Bike.Test"
+

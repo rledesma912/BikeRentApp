@@ -1,0 +1,7 @@
+C:\Users\pipo\Documents\bike.rental.intive\TestProject2\bin\Debug\TestProject2.dll
+C:\Users\pipo\Documents\bike.rental.intive\TestProject2\bin\Debug\TestProject2.pdb
+C:\Users\pipo\Documents\bike.rental.intive\TestProject2\bin\Debug\App.Alquiler.exe
+C:\Users\pipo\Documents\bike.rental.intive\TestProject2\bin\Debug\App.Alquiler.pdb
+C:\Users\pipo\Documents\bike.rental.intive\TestProject2\obj\Debug\TestProject2.csprojResolveAssemblyReference.cache
+C:\Users\pipo\Documents\bike.rental.intive\TestProject2\obj\Debug\TestProject2.dll
+C:\Users\pipo\Documents\bike.rental.intive\TestProject2\obj\Debug\TestProject2.pdb

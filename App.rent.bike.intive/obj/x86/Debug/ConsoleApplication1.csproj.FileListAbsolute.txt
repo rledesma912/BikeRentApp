@@ -1,0 +1,8 @@
+C:\desarrollo\net\bike.rental.indive\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\desarrollo\net\bike.rental.indive\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\desarrollo\net\bike.rental.indive\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.exe
+C:\desarrollo\net\bike.rental.indive\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.pdb
+C:\desarrollo\net\bike.rental.indive\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+C:\desarrollo\net\bike.rental.indive\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\desarrollo\net\bike.rental.indive\ConsoleApplication1\ConsoleApplication1\bin\Debug\nunit.framework.dll
+C:\desarrollo\net\bike.rental.indive\ConsoleApplication1\ConsoleApplication1\bin\Debug\nunit.framework.xml

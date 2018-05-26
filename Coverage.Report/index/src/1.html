@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\pipo\documents\bike.rental.intive\testproject2\unittest1.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using rent.bike.intive;
+
+
+namespace TestProject2
+{
+    [TestClass]
+    public class UnitTest1
+    {
+        [TestMethod]
+        public void TestMethod1()
+        {
+            Customer cli = new Customer();
+
+            cli.Name = &quot;Ricardo&quot;;
+            cli.LastName = &quot;Ledesma&quot;;
+
+            Assert.AreEqual(cli.Name, &quot;Ricardo&quot;);
+        }
+
+        [TestMethod]
+        public void TestMethod2()
+        {
+            Customer cli = new Customer();
+
+            cli.Name = &quot;Cosme&quot;;
+            cli.LastName = &quot;Fulanito&quot;;
+
+            Assert.AreEqual(cli.LastName, &quot;Fulanito&quot;);
+        }
+
+        [TestMethod]
+        public void TestMethod3()
+        {
+            rent.bike.intive.Bike bici = new rent.bike.intive.Bike();
+            bici.Available = true;
+            bici.Model = 666;
+
+            Assert.AreEqual(bici.Available, true);
+            Assert.AreEqual(bici.Model, 666);
+        }
+
+        [TestMethod]
+        public void TestMethod4()
+        {
+
+            IRentType rent = new RentByHour();
+
+            rent.Customer = new Customer { Name = &quot;Cosme&quot;, LastName = &quot;Fulanito&quot; };
+
+            Assert.AreEqual(rent.CalculateTotal(), 5.0);
+        }
+
+        [TestMethod]
+        public void TestMethod41()
+        {
+
+            IRentType rent = new RentByHour();
+            rent.Customer = new Customer { Name = &quot;Cosme&quot;, LastName = &quot;Fulanito&quot; };
+
+            Assert.AreEqual(rent.Customer.Name, &quot;Cosme&quot;);
+        }
+
+        [TestMethod]
+        public void TestMethod42()
+        {
+            IRentType rent = new RentByHour();
+            rent.Customer = new Customer { Name = &quot;Nacho&quot;, LastName = &quot;Gonzalez&quot; };
+
+            Assert.AreEqual(rent.Customer.LastName, &quot;Gonzalez&quot;);
+        }
+
+        [TestMethod]
+        public void TestMethod43()
+        {
+            IRentType rent = new RentByHour();
+            rent.Customer = new Customer { Name = &quot;Nacho&quot;, LastName = &quot;Gonzalez&quot; };
+
+            Assert.AreNotEqual(rent.Customer, null);
+        }
+
+        [TestMethod]
+        public void TestMethod44()
+        {
+            IRentType rent = new RentByDay();
+            rent.Customer = new Customer { Name = &quot;Thanos&quot;, LastName = &quot;Dios&quot; };
+
+            Assert.AreNotEqual(rent.Customer, null);
+        }
+
+        [TestMethod]
+        public void TestMethod45()
+        {
+            IRentType rent = new RentByWeek();
+            rent.Customer = new Customer { Name = &quot;Peter&quot;, LastName = &quot;Parker&quot; };
+
+            Assert.AreNotEqual(rent.Customer, null);
+        }
+
+        [TestMethod]
+        public void TestMethod46()
+        {
+            IRentTypeFamily rent = new RentForFamily();
+            rent.Customer = new Customer { Name = &quot;Peter&quot;, LastName = &quot;Quill&quot; };
+
+            Assert.AreNotEqual(rent.Customer, null);
+        }
+
+        [TestMethod]
+        public void TestMethod5()
+        {
+            IRentType rent = new RentByDay();
+            Assert.AreEqual(rent.CalculateTotal(), 20.0);
+        }
+
+        [TestMethod]
+        public void TestMethod51()
+        {
+            IRentType rent = new RentByDay();
+            rent.Bike = new rent.bike.intive.Bike { Model = 33, Available = true };
+            Assert.AreEqual(rent.Bike.Model, 33);
+        }
+
+        [TestMethod]
+        public void TestMethod52()
+        {
+            IRentType rent = new RentByDay();
+            rent.Bike = new rent.bike.intive.Bike { Model = 33, Available = true };
+
+            Assert.AreNotEqual(rent.Bike.Available, false);
+        }
+
+        [TestMethod]
+        public void TestMethod6()
+        {
+            IRentType rent = new RentByDay();
+
+            rent.Bike = new rent.bike.intive.Bike { Model = 33, Available = true };
+
+            Assert.AreEqual(rent.Description, &quot;This is a rent by day type&quot;);
+        }
+
+        [TestMethod]
+        public void TestMethod61()
+        {
+            IRentType rent = new RentByHour();
+
+            rent.Customer = new Customer { Name = &quot;Bart&quot;, LastName = &quot;Simpsons&quot; };
+
+            Assert.AreEqual(rent.Description, &quot;This is a rent by hour type&quot;);
+        }
+
+        [TestMethod]
+        public void TestMethod62()
+        {
+            IRentTypeFamily rent = new RentForFamily();
+            rent.DateFrom = new DateTime(2018, 5, 26);
+
+            Assert.AreEqual(rent.Description, &quot;This are rents for a family group&quot;);
+        }
+
+        [TestMethod]
+        public void TestMethod63()
+        {
+           IRentType rent = new RentByWeek();
+
+            Assert.AreEqual(rent.Description, &quot;This is a rent by entire week&quot;);
+        }
+
+        [TestMethod]
+        public void TestMethod7()
+        {
+            IRentType rent = new RentByWeek();
+            
+            Assert.AreEqual(rent.CalculateTotal(), 60.0);
+        }
+
+        [TestMethod]
+        public void TestMethod8()
+        {
+            IRentTypeFamily rent = new RentForFamily();
+
+            Assert.AreEqual(rent.CalculateTotal(), -30.0);
+        }
+
+        [TestMethod]
+        public void TestMethod9()
+        {
+            IRentTypeFamily rent = new RentForFamily();
+            rent.DateFrom = new DateTime(2018, 5, 26);
+            
+            Assert.AreEqual(rent.DateFrom.ToShortDateString(), &quot;26/05/2018&quot;);
+        }
+
+        [TestMethod]
+        public void TestMethod91()
+        {
+            IRentType rent = new RentByWeek();
+            rent.DateFrom = new DateTime(2018, 5, 26);
+
+            Assert.AreEqual(rent.DateFrom.ToShortDateString(), &quot;26/05/2018&quot;);
+        }
+
+        [TestMethod]
+        public void TestMethod92()
+        {
+            IRentType rent = new RentByDay();
+            rent.DateFrom = new DateTime(2018, 5, 26);
+
+            Assert.AreEqual(rent.DateFrom.ToShortDateString(), &quot;26/05/2018&quot;);
+        }
+
+        [TestMethod]
+        public void TestMethod93()
+        {
+            IRentType rent = new RentByHour();
+            rent.DateFrom = new DateTime(2022, 9, 1);
+
+            Assert.AreEqual(rent.DateFrom.ToShortDateString(), &quot;01/09/2022&quot;);
+        }
+
+        [TestMethod]
+        public void TestMethod94()
+        {
+            IRentTypeFamily rent = new RentForFamily();
+            rent.DateTo = new DateTime(2018, 5, 26);
+
+            Assert.AreEqual(rent.DateTo.ToShortDateString(), &quot;26/05/2018&quot;);
+        }
+
+        [TestMethod]
+        public void TestMethod95()
+        {
+            IRentType rent = new RentByWeek();
+            rent.DateTo = new DateTime(2010, 8, 25);
+
+            Assert.AreEqual(rent.DateTo.ToShortDateString(), &quot;25/08/2010&quot;);
+        }
+
+        [TestMethod]
+        public void TestMethod96()
+        {
+            IRentType rent = new RentByDay();
+            rent.DateTo = new DateTime(1976, 9, 1);
+
+            Assert.AreEqual(rent.DateTo.ToShortDateString(), &quot;01/09/1976&quot;);
+        }
+
+        [TestMethod]
+        public void TestMethod97()
+        {
+            IRentType rent = new RentByHour();
+            rent.DateTo = new DateTime(1910, 9, 12);
+
+            Assert.AreEqual(rent.DateTo.ToShortDateString(), &quot;12/09/1910&quot;);
+        }
+
+        [TestMethod]
+        public void TestMethod11()
+        {
+            IRentTypeFamily rent = new RentForFamily();
+
+            Assert.AreNotEqual(rent.PrintTicket(), &quot;&quot;);
+        }
+
+        [TestMethod]
+        public void TestMethod12()
+        {
+            IRentType rent = new RentByWeek();            
+
+            Assert.AreNotEqual(rent.PrintTicket(), &quot;&quot;);
+        }
+
+        [TestMethod]
+        public void TestMethod13()
+        {
+            IRentType rent = new RentByDay();
+            Assert.AreNotEqual(rent.PrintTicket(), &quot;&quot;);
+        }
+
+        [TestMethod]
+        public void TestMethod14()
+        {
+            IRentType rent = new RentByHour();
+
+            Assert.AreNotEqual(rent.PrintTicket(), &quot;&quot;);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[16,9,16,10,1],[17,13,17,43,1],[19,13,19,34,1],[20,13,20,38,1],[22,13,22,50,1],[23,9,23,10,1],[27,9,27,10,1],[28,13,28,43,1],[30,13,30,32,1],[31,13,31,39,1],[33,13,33,55,1],[34,9,34,10,1],[38,9,38,10,1],[39,13,39,70,1],[40,13,40,35,1],[41,13,41,30,1],[43,13,43,51,1],[44,13,44,46,1],[45,9,45,10,1],[49,9,49,10,1],[51,13,51,47,1],[53,13,53,84,1],[55,13,55,57,1],[56,9,56,10,1],[60,9,60,10,1],[62,13,62,47,1],[63,13,63,84,1],[65,13,65,58,1],[66,9,66,10,1],[70,9,70,10,1],[71,13,71,47,1],[72,13,72,84,1],[74,13,74,65,1],[75,9,75,10,1],[79,9,79,10,1],[80,13,80,47,1],[81,13,81,84,1],[83,13,83,53,1],[84,9,84,10,1],[88,9,88,10,1],[89,13,89,46,1],[90,13,90,81,1],[92,13,92,53,1],[93,9,93,10,1],[97,9,97,10,1],[98,13,98,47,1],[99,13,99,82,1],[101,13,101,53,1],[102,9,102,10,1],[106,9,106,10,1],[107,13,107,56,1],[108,13,108,81,1],[110,13,110,53,1],[111,9,111,10,1],[115,9,115,10,1],[116,13,116,46,1],[117,13,117,58,1],[118,9,118,10,1],[122,9,122,10,1],[123,13,123,46,1],[124,13,124,84,1],[125,13,125,50,1],[126,9,126,10,1],[130,9,130,10,1],[131,13,131,46,1],[132,13,132,84,1],[134,13,134,60,1],[135,9,135,10,1],[139,9,139,10,1],[140,13,140,46,1],[142,13,142,84,1],[144,13,144,77,1],[145,9,145,10,1],[149,9,149,10,1],[150,13,150,47,1],[152,13,152,83,1],[154,13,154,78,1],[155,9,155,10,1],[159,9,159,10,1],[160,13,160,56,1],[161,13,161,55,1],[163,13,163,84,1],[164,9,164,10,1],[168,9,168,10,1],[169,12,169,46,1],[171,13,171,80,1],[172,9,172,10,1],[176,9,176,10,1],[177,13,177,47,1],[179,13,179,58,1],[180,9,180,10,1],[184,9,184,10,1],[185,13,185,56,1],[187,13,187,59,1],[188,9,188,10,1],[192,9,192,10,1],[193,13,193,56,1],[194,13,194,55,1],[196,13,196,78,1],[197,9,197,10,1],[201,9,201,10,1],[202,13,202,47,1],[203,13,203,55,1],[205,13,205,78,1],[206,9,206,10,1],[210,9,210,10,1],[211,13,211,46,1],[212,13,212,55,1],[214,13,214,78,1],[215,9,215,10,1],[219,9,219,10,1],[220,13,220,47,1],[221,13,221,54,1],[223,13,223,78,1],[224,9,224,10,1],[228,9,228,10,1],[229,13,229,56,1],[230,13,230,53,1],[232,13,232,76,1],[233,9,233,10,1],[237,9,237,10,1],[238,13,238,47,1],[239,13,239,53,1],[241,13,241,76,1],[242,9,242,10,1],[246,9,246,10,1],[247,13,247,46,1],[248,13,248,52,1],[250,13,250,76,1],[251,9,251,10,1],[255,9,255,10,1],[256,13,256,47,1],[257,13,257,53,1],[259,13,259,76,1],[260,9,260,10,1],[264,9,264,10,1],[265,13,265,56,1],[267,13,267,56,1],[268,9,268,10,1],[272,9,272,10,1],[273,13,273,47,1],[275,13,275,56,1],[276,9,276,10,1],[280,9,280,10,1],[281,13,281,46,1],[282,13,282,56,1],[283,9,283,10,1],[287,9,287,10,1],[288,13,288,47,1],[290,13,290,56,1],[291,9,291,10,1]]);
+    </script>
+  </body>
+</html>

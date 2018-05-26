@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\pipo\documents\bike.rental.intive\app.rent.bike.intive\daycoststrategy.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace rent.bike.intive {
+   public class DayCostStrategy : IRentCostStrategy {
+
+      public string Definition() {
+          return &quot;A rent by day : cost $&quot; +this.Calculate().ToString();
+      }
+
+
+      public double Calculate() {
+         return 20.0;
+      }
+   }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[9,34,9,35,1],[10,11,10,72,1],[11,7,11,8,1],[14,33,14,34,1],[15,10,15,22,1],[16,7,16,8,1]]);
+    </script>
+  </body>
+</html>
